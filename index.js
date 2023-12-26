@@ -11,9 +11,12 @@ const sparqlEndpoint = 'http://localhost:3030/#/dataset/demo/query';
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
+//Serving static files
+app.use(express.static(__dirname));
+
 // Route trang chủ
 app.get('/', (req, res) => {
-  res.sendFile(__dirname + '/index.html');
+  res.sendFile('index.html', { root: __dirname });
 });
 
 // Route để xử lý yêu cầu SPARQL
